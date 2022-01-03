@@ -1,0 +1,101 @@
+:root {
+  --txt-clr: #525252;
+  --dark-txt: rgb(31, 31, 31);
+}
+* {
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+/* global */
+ul {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style: none;
+}
+.container {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 400px;
+}
+
+.header {
+  display: flex;
+  width: 200px;
+  box-shadow: 1px 1px 7px #cfcfcf;
+  margin: 50px auto;
+  transition: all 300ms;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  justify-content: space-evenly;
+  min-height: 50px;
+  padding: 5px;
+}
+
+.header input {
+  width: 85%;
+  border: none;
+  outline: none;
+  transition: all 300ms;
+  font-size: 1.6rem;
+  color: var(--txt-clr);
+  cursor: pointer;
+}
+.big-width {
+  width: 100%;
+}
+
+.header .bi-arrow-down-square-fill {
+  font-size: 30px;
+  height: min-content;
+  margin: auto 0;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--txt-clr);
+  transition: all 300ms;
+}
+
+.header .bi-arrow-down-square-fill:hover {
+  color: var(--dark-txt);
+}
+
+/* main div */
+
+.main {
+  min-width: 100%;
+  min-height: 500px;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 7px #858585;
+  margin-bottom: 30px;
+}
+.main .list{
+    padding: 20px;
+}
+
+.main .list .item {
+  display: flex;
+  background: var(--txt-clr);
+  justify-content: space-between;
+  border-radius: .5rem;
+  align-items: center;
+  padding: 0 10px;
+  color: white;
+  margin-bottom: 5px;
+}
+.main .list .item p{
+    padding: 0 15px;
+}
+.main .list .item .bi-trash-fill{
+    font-size: 25px;
+    cursor: pointer;
+    transition: all 300ms;
+}
+.main .list .item .bi-trash-fill:hover{
+    color: rgb(255, 0, 0);
+}
+

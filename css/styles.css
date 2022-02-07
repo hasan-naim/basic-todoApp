@@ -89,6 +89,8 @@ li {
 }
 .main .list .item p{
     padding: 0 15px;
+    max-width: 80%;
+    word-wrap: break-word;
 }
 .main .list .item .bi-trash-fill{
     font-size: 25px;

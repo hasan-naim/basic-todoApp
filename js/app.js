@@ -4,25 +4,48 @@ const headerDiv = document.querySelector(".header");
 
 const addBtn = document.querySelector(".addBtn");
 const listUl = document.querySelector(".list");
-let id = 0;
+
+
+// an array for list items...single source for information
+
+let itemArr = [
+    {
+        text: "hello",
+        id: 0
+    },
+    {
+        text: "asf",
+        id: 1
+    },
+    {
+        text: "heasllo",
+        id: 2
+    }
+]
+
+let id = itemArr[itemArr.length - 1].id + 1;
+
+// when click on input box it will be wider .. cool transition
 inputElement.addEventListener("focus", () => {
     headerDiv.classList.add("big-width");
 });
+
+// when click on anywhere except input box it will be less wider .. cool transition
 inputElement.addEventListener("blur", () => {
     headerDiv.classList.remove("big-width");
 });
 
+// when mouse enter the add button then input box will be unfocus and input box /// remain wider...
 addBtn.addEventListener("mouseover", () => {
     inputElement.blur();
-        headerDiv.classList.add("big-width");
+    headerDiv.classList.add("big-width");
     
 });
 
 /// adding todo
 
-
+// if i press any key of my keyboard input box will be focused and it will start typing
 document.addEventListener("keypress", (event) => {
-
             inputElement.focus();
         
 });
@@ -36,7 +59,10 @@ document.addEventListener("keyup", (event)=> {
         }else {
             const text = inputElement.value
             addTodo(text, id)
+            itemArr.push({text: text, id: id})
+            // increasing id ...and giving every item a separete id..
             id++;
+            inputElement.value = ""
         }
     }
 })
@@ -50,6 +76,7 @@ addBtn.addEventListener("click", () => {
         const text = inputElement.value
         addTodo(text, id)
         id++;
+        inputElement.value = ""
     }
 });
 
@@ -64,3 +91,8 @@ function addTodo(text, id) {
 
     listUl.insertAdjacentHTML("afterbegin", html);
 }
+
+
+itemArr.forEach(({text, id}) => {
+    addTodo(text, id)
+})

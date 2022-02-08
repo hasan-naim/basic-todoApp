@@ -9,21 +9,15 @@ const listUl = document.querySelector(".list");
 // an array for list items...single source for information
 
 let itemArr = [
-    {
-        text: "hello",
-        id: 0
-    },
-    {
-        text: "asf",
-        id: 1
-    },
-    {
-        text: "heasllo",
-        id: 2
-    }
+    
 ]
+let id
+if(itemArr.length !== 0 ){
+    id = itemArr[itemArr.length - 1].id + 1;
 
-let id = itemArr[itemArr.length - 1].id + 1;
+}else{
+    id = 0
+}
 
 // when click on input box it will be wider .. cool transition
 inputElement.addEventListener("focus", () => {
@@ -85,7 +79,7 @@ function addTodo(text, id) {
     <li class="item" id=${id}>
                     <input type="checkbox">
                     <p>${text}</p>
-                    <i class="bi bi-trash-fill"></i>
+                    <i class="bi bi-trash-fill" job="delete"></i>
                 </li>
     `;
 
@@ -96,3 +90,32 @@ function addTodo(text, id) {
 itemArr.forEach(({text, id}) => {
     addTodo(text, id)
 })
+
+
+// removing todo.
+// first checking if user clicking delete button
+
+listUl.addEventListener("click", (event) => {
+    let element = event.target;
+    let button = element.getAttribute("job")
+    if(button === "delete" ){
+        removeItem(element)
+    }
+
+    console.log(element.parentElement.parentElement)
+
+})
+
+function removeItem(element){
+    element.parentElement.parentElement.removeChild(element.parentElement)
+    let id = element.parentElement.id;
+    let theObj
+    itemArr.forEach((everyObj) => {
+        if(everyObj.id == id){
+            theObj = itemArr.indexOf(everyObj)
+            return;
+        }
+    })
+    itemArr.splice(theObj, 1)
+    console.log(theObj)
+}

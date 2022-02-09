@@ -5,19 +5,22 @@ const headerDiv = document.querySelector(".header");
 const addBtn = document.querySelector(".addBtn");
 const listUl = document.querySelector(".list");
 
+// an array for list items...single source for information
+let itemArr;
 
 // parsing localstorage
 
-let dataInLocalStorage = JSON.parse(localStorage.TodoList)
+let dataInLocalStorage = localStorage.getItem("TodoList")
 
 
 
-// an array for list items...single source for information
-let itemArr;
+
+
 
 //checking if there is data in localstorage
 
 if(dataInLocalStorage){
+    dataInLocalStorage = JSON.parse(dataInLocalStorage)
     itemArr = dataInLocalStorage
 }else {
     itemArr = []
@@ -43,7 +46,6 @@ if(itemArr.length > 0 ){
             let id = everyObj.id;
             const theCheckBox = document.getElementById(id).firstElementChild;
             theCheckBox.checked = true
-            console.log(theCheckBox)
         }else{
             let id = everyObj.id;
             const theCheckBox = document.getElementById(id).firstElementChild;
